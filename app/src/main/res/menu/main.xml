@@ -6,4 +6,27 @@
         android:id="@+id/home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/home_text" />
+    <item android:title="@string/etc_text" >
+        <menu >
+            <item android:title="Item" />
+            <item android:title="Item" />
+            <item android:title="Item" />
+        </menu>
+    </item>
+    <item android:title="@string/noodle_text" >
+        <menu >
+            <item android:title="@string/soba1_text" />
+            <item android:title="@string/soba2_text" />
+            <item android:title="Item" />
+            <item android:title="Item" />
+        </menu>
+    </item>
+    <item android:title="@string/curry_text" >
+        <menu >
+            <item android:title="@string/greencrry_text" />
+            <item android:title="@string/hayashi_text" />
+            <item android:title="@string/beefcurry_text" />
+        </menu>
+    </item>
+    <item android:title="@string/stew_text" />
 </menu>
