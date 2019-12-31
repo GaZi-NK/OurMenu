@@ -24,4 +24,6 @@
     <string name="ankake_text">あんかけ焼きそば</string>
     <string name="baigai_text">バイ貝煮つけ</string>
     <string name="tamoricurry_text">タモリカレー</string>
+    <string name="mail_text">メールする</string>
+    <string name="sms_text">SMSする</string>
 </resources>

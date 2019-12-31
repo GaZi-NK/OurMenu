@@ -18,7 +18,7 @@
                 android:id="@+id/greencurry"
                 android:title="@string/greencrry_text" />
             <item
-                android:id="@+id/tamori"
+                android:id="@+id/tamoricurry"
                 android:title="@string/tamoricurry_text" />
             <item
                 android:id="@+id/beefcurry"
@@ -68,6 +68,9 @@
         android:id="@+id/etc"
         android:title="@string/etc_text">
         <menu>
+            <item
+                android:id="@+id/ankake"
+                android:title="@string/ankake_text" />
             <item
                 android:id="@+id/peperoncino"
                 android:title="@string/peperoncino_text" />
