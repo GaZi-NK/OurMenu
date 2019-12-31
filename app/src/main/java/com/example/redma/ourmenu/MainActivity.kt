@@ -1,5 +1,7 @@
 package com.example.redma.ourmenu
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
@@ -83,10 +85,38 @@ class MainActivity : AppCompatActivity() {
         menuInfo: ContextMenu.ContextMenuInfo?
     ) {
         super.onCreateContextMenu(menu, v, menuInfo)
-
         //料理が選択されているときのみメニューを表示⇒選択済みの料理をメールなどで共有するため
-        if (menuText.text.isNotEmpty()){
-            menuInflater.inflate(R.menu.context,menu)   //((表示させるmenuのXMLファイル,XMLファイルのどのビューか)
+        if (menuText.text.isNotEmpty()) {
+            menuInflater.inflate(R.menu.context, menu)   //((表示させるmenuのXMLファイル,XMLファイルのどのビューか)
         }
+    }
+
+    //コンテキストメニューが選択された時の動作
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        when(item?.itemId){
+            R.id.mail ->{
+                val subject = getString(R.string.app_name)  //件名
+                val text = "${menuText.text}が食べたい" //内容
+                val uri = Uri.fromParts("mailto","redman.fox@icloud.com",null)  //送り相手？
+                val intent = Intent(Intent.ACTION_SENDTO,uri)
+                intent.putExtra(Intent.EXTRA_SUBJECT,subject)
+                intent.putExtra(Intent.EXTRA_TEXT,text)
+                if (intent.resolveActivity(packageManager) != null) {
+                    startActivity(intent)
+                }
+                return true
+            }
+            R.id.sms -> {
+                val text = "${menuText.text}が食べたい"
+                val uri = Uri.fromParts("smsto","09057023197",null)
+                val intent = Intent(Intent.ACTION_SENDTO,uri)
+                intent.putExtra("sms_body",text)
+                if (intent.resolveActivity(packageManager) != null ){
+                    startActivity(intent)
+                }
+                return true
+            }
+        }
+        return super.onContextItemSelected(item)
     }
 }
