@@ -95,17 +95,25 @@ class MainActivity : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem): Boolean {
         when(item?.itemId){
             R.id.mail ->{
-                val subject = getString(R.string.app_name)  //件名
+                //メールの件名
+                val subject = getString(R.string.app_name)
+                //メールの内容
                 val text = "${menuText.text}が食べたい" //内容
-                val uri = Uri.fromParts("mailto","redman.fox@icloud.com",null)  //送り相手？
+                //第一引数でメールを指定、第二引数で送り先相手のメアド、第三はよくわからん
+                val uri = Uri.fromParts("mailto","redman.fox@icloud.com",null)
+                //第一引数は暗黙インテントでメールアプリ起動、第二引数は暗黙インテントに渡す情報(uriの情報)
                 val intent = Intent(Intent.ACTION_SENDTO,uri)
+                //メールの件名(subject)をインテントに挿入
                 intent.putExtra(Intent.EXTRA_SUBJECT,subject)
+                //メールの内容(text)をインテントに挿入
                 intent.putExtra(Intent.EXTRA_TEXT,text)
+                //メールアプリがあればインテントを実行する処理
                 if (intent.resolveActivity(packageManager) != null) {
                     startActivity(intent)
                 }
                 return true
             }
+            //メールの処理とほぼ同じ
             R.id.sms -> {
                 val text = "${menuText.text}が食べたい"
                 val uri = Uri.fromParts("smsto","09057023197",null)
